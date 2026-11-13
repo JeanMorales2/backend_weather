@@ -1,0 +1,14 @@
+# Compilación
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+
+# Resultados y cobertura
+TestResults/
+coverage*
+
+# Configuración local
+.env
+.idea/
