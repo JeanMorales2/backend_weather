@@ -1,4 +1,5 @@
-services:
+﻿services:
+  # PostgreSQL persiste el catálogo y publica un healthcheck para coordinar el arranque de la API.
   db:
     image: postgres:17-alpine
     restart: unless-stopped
@@ -13,16 +14,18 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+  # La API espera la base saludable, recibe su configuración por variables y conecta con Host=db.
   api:
     restart: unless-stopped
     build:
       context: .
-      dockerfile: src/MarcasAutos.Api/Dockerfile
+      dockerfile: src/MarcasAutos.Main/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       ASPNETCORE_URLS: http://+:8080
       Swagger__Enabled: ${SWAGGER_ENABLED:-true}
       ConnectionStrings__Default: Host=db;Port=5432;Database=${POSTGRES_DB:-marcasautos};Username=${POSTGRES_USER:-marcas};Password=${POSTGRES_PASSWORD:-marcas_local}
+    # Publica el puerto HTTP para consumir la API y su Swagger cuando esté habilitado.
     ports:
       - "${API_PORT:-8080}:8080"
     depends_on:

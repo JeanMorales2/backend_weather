@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <!-- La capa Main compone la aplicación y enlaza las dependencias de las demás capas. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Necesario para que `dotnet ef` use Main como proyecto de arranque al crear migraciones (no se publica con la API). -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MarcasAutos.Application\MarcasAutos.Application.csproj" />
+    <ProjectReference Include="..\MarcasAutos.Infrastructure\MarcasAutos.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- La capa Domain contiene el modelo y no depende de ninguna otra capa. -->
+  <!-- ValueObjects, Services, Events y Ports se reservan para reglas futuras y se conservan vacíos mediante .gitkeep. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+</Project>
+
